@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GithubController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -35,5 +36,11 @@ Route::get('/auth/redirect', function () {
 });
 
 Route::get('/auth/callback', [GithubController::class, 'socialLogin']);
+
+Route::get('/auth/google/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/auth/google/callback', [GoogleController::class, 'socialLogin']);
 
 require __DIR__ . '/auth.php';
