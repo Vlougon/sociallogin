@@ -15,7 +15,7 @@ class GithubController extends Controller
         $user = User::UpdateOrCreate(
             ['github_id' => $githubUser->id],
             [
-                'name' => $githubUser->name,
+                'name' => $githubUser->name ? $githubUser->name : 'Anon',
                 'email' => $githubUser->email,
                 'github_id' => $githubUser->id,
                 'github_token' => $githubUser->token,
